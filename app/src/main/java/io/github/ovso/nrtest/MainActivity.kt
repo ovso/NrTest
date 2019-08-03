@@ -1,16 +1,21 @@
 package io.github.ovso.nrtest
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.PagerAdapter
+import com.bumptech.glide.Glide
 import io.github.ovso.nrtest.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
+import kotlinx.android.synthetic.main.layout_profile_img.viewpager_profile
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,20 +23,31 @@ class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-    val contentView =
-      DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-    viewModel = provideViewModel()
-    contentView.viewModel = viewModel
-    setSupportActionBar(toolbar)
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    title = getString(R.string.profile_title)
-    setupViewPager()
+    val contentView: ActivityMainBinding =
+      DataBindingUtil.setContentView(this, R.layout.activity_main)
+    setupViewModel(contentView)
+    setupActionBar()
+    setupProfileImages();
     viewModel.fetchProfile()
   }
 
-  private fun setupViewPager() {
-//    viewpager_main.adapter = MyPageAdapter()
+  private fun setupProfileImages() {
+    viewModel.imagesLiveData.observe(this, Observer {
+      it?.let {
+        viewpager_profile.adapter = MyPageAdapter(it)
+      }
+    })
+  }
+
+  private fun setupViewModel(contentView: ActivityMainBinding) {
+    viewModel = provideViewModel()
+    contentView.viewModel = viewModel
+  }
+
+  private fun setupActionBar() {
+    setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    title = getString(R.string.profile_title)
   }
 
   private fun provideViewModel() = ViewModelProviders.of(this).get(MainViewModel::class.java)
@@ -49,10 +65,10 @@ class MainActivity : AppCompatActivity() {
     return super.onOptionsItemSelected(item)
   }
 
-  class MyPageAdapter : PagerAdapter() {
+  class MyPageAdapter(private val images: List<String>) : PagerAdapter() {
 
     override fun getCount(): Int {
-      return 3
+      return images.size
     }
 
     override fun isViewFromObject(view: View, o: Any): Boolean {
@@ -65,7 +81,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-      return super.instantiateItem(container, position)
+      val view = LayoutInflater.from(container.context)
+        .inflate(R.layout.item_profile_img, container, false)
+      Glide.with(view).load(images[position]).into(view as ImageView)
+      container.addView(view)
+      return view
     }
   }
 }

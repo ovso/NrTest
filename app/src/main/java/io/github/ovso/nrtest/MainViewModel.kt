@@ -2,6 +2,7 @@ package io.github.ovso.nrtest
 
 import android.view.View
 import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.github.ovso.nrtest.api.ProfileRequest
 import io.github.ovso.nrtest.api.model.Person
@@ -14,6 +15,7 @@ import io.reactivex.schedulers.Schedulers
 class MainViewModel : ViewModel() {
   private val compositeDisposable = CompositeDisposable()
 
+  val imagesLiveData = MutableLiveData<List<String>>()
   val nameAgeObField = ObservableField<String>()
   val locDistObField = ObservableField<String>()
   val heiBlooObfield = ObservableField<String>()
@@ -39,6 +41,7 @@ class MainViewModel : ViewModel() {
   }
 
   private fun handlePerson(person: Person) {
+    imagesLiveData.value = person.profile_images
     nameAgeObField.set("${person.name}, ${person.age}")
     locDistObField.set("${person.location}, ${person.distance}")
     heiBlooObfield.set("${person.height}, ${person.blood_type}")
