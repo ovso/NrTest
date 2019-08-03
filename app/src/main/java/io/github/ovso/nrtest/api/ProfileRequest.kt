@@ -1,6 +1,6 @@
 package io.github.ovso.nrtest.api
 
-import com.google.gson.JsonElement
+import io.github.ovso.nrtest.api.model.Person
 import io.reactivex.Single
 
 class ProfileRequest : BaseRequest<ProfileService>() {
@@ -8,7 +8,7 @@ class ProfileRequest : BaseRequest<ProfileService>() {
   override val apiClass: Class<ProfileService>
     get() = ProfileService::class.java
 
-  fun profile(): Single<JsonElement> {
+  fun profile(): Single<Person> {
     return api.profile()
   }
 

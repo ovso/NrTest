@@ -30,10 +30,10 @@
           tools:layout_editor_absoluteY="20dp"
           />
       <TextView
-          android:id="@+id/textview_profile_edu"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="3"
+          android:text="@{viewModel.religioObField.get()}"
           android:textColor="@color/dark"
           android:textSize="16sp"
           tools:layout_editor_absoluteY="20dp"
@@ -57,11 +57,11 @@
           tools:layout_editor_absoluteY="20dp"
           />
       <TextView
-          android:id="@+id/textview_profile_occ"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_weight="3"
           android:maxLines="1"
+          android:text="@{viewModel.alcoholObField.get()}"
           android:textColor="@color/dark"
           android:textSize="16sp"
           tools:layout_editor_absoluteY="20dp"
@@ -91,6 +91,7 @@
           android:layout_weight="3"
           android:ellipsize="end"
           android:maxLines="2"
+          android:text="@{viewModel.smokingObField.get()}"
           android:textColor="@color/dark"
           android:textSize="16sp"
           tools:layout_editor_absoluteY="20dp"

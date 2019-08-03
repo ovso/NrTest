@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
   <data>
@@ -29,13 +30,28 @@
           android:orientation="vertical"
           android:showDividers="middle"
           >
-        <include layout="@layout/layout_profile_img"/>
-        <include layout="@layout/layout_profile_default"/>
-        <include layout="@layout/layout_profile_edu_occ_desc"/>
-        <include layout="@layout/layout_profile_religion_alcohol_smoke"/>
+        <include
+            layout="@layout/layout_profile_img"
+            bind:viewModel="@{viewModel}"
+            />
+        <include
+            layout="@layout/layout_profile_default"
+            bind:viewModel="@{viewModel}"
+            />
+        <include
+            layout="@layout/layout_profile_edu_occ_desc"
+            bind:viewModel="@{viewModel}"
+            />
+        <include
+            layout="@layout/layout_profile_religion_alcohol_smoke"
+            bind:viewModel="@{viewModel}"
+            />
       </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-    <include layout="@layout/layout_profile_choice"/>
+    <include
+        layout="@layout/layout_profile_choice"
+        bind:viewModel="@{viewModel}"
+        />
   </LinearLayout>
 </layout>

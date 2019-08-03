@@ -15,13 +15,14 @@
       android:layout_height="wrap_content"
       >
     <TextView
-        android:id="@+id/textview_profile_lable_edu"
+        android:id="@+id/textview_profile_name_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:text="@{viewModel.nameAgeObField.get()}"
+        android:textColor="@color/dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/dark"
         tools:text="상민이는이름이열글자, 23"
         style="@style/TextStyle2"
         />
@@ -34,33 +35,36 @@
         android:gravity="center_vertical"
         android:text="@string/profile_verify_mobile"
         android:textSize="12sp"
+        android:visibility="@{viewModel.verifMoObField.get()}"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textview_profile_lable_edu"
+        app:layout_constraintTop_toTopOf="@+id/textview_profile_name_age"
         />
 
     <TextView
-        android:id="@+id/textview_profile_lable_occ"
+        android:id="@+id/textview_profile_loc_dist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:text="@{viewModel.locDistObField.get()}"
         android:textColor="@color/dark"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_profile_lable_edu"
+        app:layout_constraintTop_toBottomOf="@+id/textview_profile_name_age"
         tools:text="경기도 용인시, 20km"
         />
 
     <TextView
-        android:id="@+id/textview_profile_lable_desc"
+        android:id="@+id/textview_profile_height_blood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="9dp"
+        android:text="@{viewModel.heiBlooObfield.get()}"
         android:textColor="@color/dark"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_profile_lable_occ"
+        app:layout_constraintTop_toBottomOf="@+id/textview_profile_loc_dist"
         tools:text="180cm, O형"
         />
   </androidx.constraintlayout.widget.ConstraintLayout>
