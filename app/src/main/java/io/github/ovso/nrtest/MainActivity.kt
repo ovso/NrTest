@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun setupActionBar() {
     setSupportActionBar(toolbar)
+    supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_wippy_common_back_btn_on)
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
     title = getString(R.string.profile_title)
   }
