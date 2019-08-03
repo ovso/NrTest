@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+  <data>
+    <variable
+        name="viewModel"
+        type="io.github.ovso.nrtest.MainViewModel"
+        />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+    <TextView
+        android:id="@+id/textview_profile_lable_edu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/dark"
+        tools:text="상민이는이름이열글자, 23"
+        style="@style/TextStyle2"
+        />
+    <TextView
+        android:id="@+id/textview_profile_verify_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_profile_phone_mark_icon"
+        android:gravity="center_vertical"
+        android:text="@string/profile_verify_mobile"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textview_profile_lable_edu"
+        />
+
+    <TextView
+        android:id="@+id/textview_profile_lable_occ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/dark"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_profile_lable_edu"
+        tools:text="경기도 용인시, 20km"
+        />
+
+    <TextView
+        android:id="@+id/textview_profile_lable_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="9dp"
+        android:textColor="@color/dark"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_profile_lable_occ"
+        tools:text="180cm, O형"
+        />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

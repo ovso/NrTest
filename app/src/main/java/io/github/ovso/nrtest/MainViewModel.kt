@@ -15,13 +15,9 @@ class MainViewModel : ViewModel() {
   fun fetchProfile() {
     addDisposable(
       ProfileRequest().profile().subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread()).subscribeBy(
-          onError = {
-            Timber.d("error = $it")
-          }, onSuccess = {
-            Timber.d("json = $it")
-          })
-    )
+        .observeOn(AndroidSchedulers.mainThread()).subscribeBy {
+          Timber.d("json = $it")
+        })
   }
 
   private fun addDisposable(d: Disposable) {

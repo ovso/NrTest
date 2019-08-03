@@ -17,4 +17,11 @@
   <string name="bottom_nav_month">MONTH</string>
   <string name="bottom_nav_day">DAY</string>
   <string name="profile_title">프로필</string>
+  <string name="profile_verify_mobile">전화번호 인증됨</string>
+  <string name="profile_lable_edu">학교</string>
+  <string name="profile_lable_occ">직업</string>
+  <string name="profile_lable_description">내소개</string>
+  <string name="profile_lable_religion">종교</string>
+  <string name="profile_lable_alcohol">음주</string>
+  <string name="profile_lable_smoke">흡연</string>
 </resources>
