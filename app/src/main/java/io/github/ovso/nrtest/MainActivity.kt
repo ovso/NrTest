@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -53,10 +52,10 @@ class MainActivity : AppCompatActivity() {
         )
       radiogroup_profile_images.addView(dot)
     }
-    radiogroup_profile_images.check(radiogroup_profile_images.getChildAt(0).getId())
+    radiogroup_profile_images.check(radiogroup_profile_images.getChildAt(0).id)
     viewpager_profile.addOnPageChangeListener(object : SimpleOnPageChangeListener() {
       override fun onPageSelected(position: Int) {
-        radiogroup_profile_images.check(radiogroup_profile_images.getChildAt(position).getId())
+        radiogroup_profile_images.check(radiogroup_profile_images.getChildAt(position).id)
       }
     })
   }
