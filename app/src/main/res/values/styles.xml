@@ -26,4 +26,12 @@
     <item name="android:textSize">16sp</item>
     <item name="android:textColor">@android:color/black</item>
   </style>
+
+  <style name="Profile_Paging_Dot">
+    <item name="android:layout_width">30dp</item>
+    <item name="android:layout_height">30dp</item>
+    <item name="android:button">@drawable/profile_img_paging_dot_selector</item>
+    <item name="android:clickable">false</item>
+  </style>
+
 </resources>

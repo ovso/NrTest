@@ -12,9 +12,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener
 import com.bumptech.glide.Glide
 import io.github.ovso.nrtest.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.app_bar_main.toolbar
+import kotlinx.android.synthetic.main.layout_profile_img.radiogroup_profile_images
 import kotlinx.android.synthetic.main.layout_profile_img.viewpager_profile
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +37,25 @@ class MainActivity : AppCompatActivity() {
     viewModel.imagesLiveData.observe(this, Observer {
       it?.let {
         viewpager_profile.adapter = MyPageAdapter(it)
+        handlePagingDot(it)
+      }
+    })
+  }
+
+  private fun handlePagingDot(images: List<String>) {
+    for (url in images) {
+      val dot =
+        layoutInflater.inflate(
+          R.layout.item_profile_images_dot,
+          viewpager_profile,
+          false
+        )
+      radiogroup_profile_images.addView(dot)
+    }
+    radiogroup_profile_images.check(radiogroup_profile_images.getChildAt(0).getId())
+    viewpager_profile.addOnPageChangeListener(object : SimpleOnPageChangeListener() {
+      override fun onPageSelected(position: Int) {
+        radiogroup_profile_images.check(radiogroup_profile_images.getChildAt(position).getId())
       }
     })
   }
